@@ -7,8 +7,8 @@ CREATE TABLE Employee (
     salary DECIMAL(10, 2),
     super_id INT,
     branch_id INT,
-    FOREIGN KEY (super_id) REFERENCES Employee(emp_id),  -- Self-referencing for supervisor
-    FOREIGN KEY (branch_id) REFERENCES Branch(branch_id) -- Link to Branch table
+    FOREIGN KEY (super_id) REFERENCES Employee(emp_id), 
+    FOREIGN KEY (branch_id) REFERENCES Branch(branch_id) 
 );
 
 
@@ -17,7 +17,7 @@ CREATE TABLE Branch (
     branch_name VARCHAR(50),
     mgr_id INT,
     mgr_start_date DATE,
-    FOREIGN KEY (mgr_id) REFERENCES Employee(emp_id) -- Link to Employee as manager
+    FOREIGN KEY (mgr_id) REFERENCES Employee(emp_id) 
 );
 
 
@@ -26,7 +26,7 @@ CREATE TABLE Client (
     client_id INT PRIMARY KEY,
     client_name VARCHAR(100),
     branch_id INT,
-    FOREIGN KEY (branch_id) REFERENCES Branch(branch_id) -- Link to Branch table
+    FOREIGN KEY (branch_id) REFERENCES Branch(branch_id) 
 );
 
 
@@ -34,9 +34,9 @@ CREATE TABLE Works_With (
     emp_id INT,
     client_id INT,
     total_sales DECIMAL(10, 2),
-    PRIMARY KEY (emp_id, client_id),  -- Composite primary key
-    FOREIGN KEY (emp_id) REFERENCES Employee(emp_id), -- Link to Employee table
-    FOREIGN KEY (client_id) REFERENCES Client(client_id) -- Link to Client table
+    PRIMARY KEY (emp_id, client_id), 
+    FOREIGN KEY (emp_id) REFERENCES Employee(emp_id), 
+    FOREIGN KEY (client_id) REFERENCES Client(client_id) 
 );
 
 
@@ -44,8 +44,8 @@ CREATE TABLE Branch_Supplier (
     branch_id INT,
     supplier_name VARCHAR(100),
     supply_type VARCHAR(50),
-    PRIMARY KEY (branch_id, supplier_name),  -- Composite primary key
-    FOREIGN KEY (branch_id) REFERENCES Branch(branch_id) -- Link to Branch table
+    PRIMARY KEY (branch_id, supplier_name), 
+    FOREIGN KEY (branch_id) REFERENCES Branch(branch_id) 
 );
 
 
